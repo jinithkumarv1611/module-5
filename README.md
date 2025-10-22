@@ -10,9 +10,35 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+int main()
+{
+    float length, breadth, area;
+    float *x, *y;
+
+   
+    printf("Enter the length of rectangle: ");
+    scanf("%f", &length);
+    printf("Enter the breadth of rectangle: ");
+    scanf("%f", &breadth);
+
+  
+    x = &length;
+    y = &breadth;
+
+ 
+    area = (*x) * (*y);
+
+  
+    printf("Area of Rectangle = %.2f\n", area);
+
+    return 0;
+}
+```
 ## OUTPUT
-		       	
+![alt text](1.png)	       	
 
 
 ## RESULT
@@ -34,9 +60,37 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+int main() {
+    char temp[100]; 
+    char *str;
+
+    
+    printf("Enter a string: ");
+    scanf("%99s", temp);
+
+    str = (char *)malloc((strlen(temp) + 1) * sizeof(char)); 
+    if (str == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+
+    strcpy(str, temp);
+
+   
+    printf("The String is: %s\n", str);
+
+ 
+    free(str);
+    return 0;
+}
+```
 ## OUTPUT
-
+![alt text](2.png)
 
 
 ## RESULT
@@ -60,10 +114,41 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct Student {
+    char name[50];
+    int rollNo;
+    float marks;
+};
+
+int main() {
+    
+    struct Student s;
+
+   
+    printf("Enter student name: ");
+    scanf("%s", s.name);
+
+    printf("Enter roll number: ");
+    scanf("%d", &s.rollNo);
+
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    
+    printf("Name      : %s\n", s.name);
+    printf("Roll No   : %d\n", s.rollNo);
+    printf("Marks     : %.2f\n", s.marks);
+
+   
+    return 0;
+}
+```
 
 ## OUTPUT
-
+![alt text](3.png)
 
 ## RESULT
 
@@ -87,10 +172,57 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct Employee {
+    char name[50];
+    int empId;
+    float basicPay;
+    float da;    
+    float hra; 
+    float grossSalary;
+};
+
+int main() {
+    struct Employee emp[3];
+    int i;
+
+    for(i = 0; i < 3; i++) {
+        printf("Enter details of employee %d:\n", i+1);
+
+        printf("Name: ");
+        scanf("%49s", emp[i].name);
+
+        printf("Employee ID: ");
+        scanf("%d", &emp[i].empId);
+
+        printf("Basic Pay: ");
+        scanf("%f", &emp[i].basicPay);
+
+        emp[i].da = 0.10 * emp[i].basicPay;   
+        emp[i].hra = 0.30 * emp[i].basicPay; 
+        emp[i].grossSalary = emp[i].basicPay + emp[i].da + emp[i].hra;
+
+        printf("\n");
+    }
+
+    for(i = 0; i < 3; i++) {
+        printf("Employee %d:\n", i+1);
+        printf("Name        : %s\n", emp[i].name);
+        printf("Employee ID : %d\n", emp[i].empId);
+        printf("Basic Pay   : %.2f\n", emp[i].basicPay);
+        printf("DA (10%%)    : %.2f\n", emp[i].da);
+        printf("HRA (30%%)   : %.2f\n", emp[i].hra);
+        printf("Gross Salary: %.2f\n\n", emp[i].grossSalary);
+    }
+
+    return 0;
+}
+```
 
  ## OUTPUT
-
+![alt text](4.png)
  
 
 ## RESULT
@@ -134,10 +266,49 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+```
+#include <stdio.h>
 
+struct Student {
+    char name[10];     
+    int rollno;        
+    int subject[5];     
+    int total;        
+    float average;      
+};
+
+int main() {
+    struct Student s[2]; 
+    int i, j;
+
+    
+    for(i = 0; i < 2; i++) {
+        printf("Enter marks for student %d:\n", i + 1);
+        for(j = 0; j < 5; j++) {
+            printf("Subject %d marks: ", j + 1);
+            scanf("%d", &s[i].subject[j]);
+        }
+    }
+
+    for(i = 0; i < 2; i++) {
+        s[i].total = 0;
+        for(j = 0; j < 5; j++) {
+            s[i].total += s[i].subject[j];
+        }
+        s[i].average = s[i].total / 5.0;
+    }
+
+    for(i = 0; i < 2; i++) {
+        printf("Student %d: Total = %d, Average = %.2f\n", i + 1, s[i].total, s[i].average);
+    }
+
+    
+    return 0;
+}
+```
 
 ## OUTPUT
-
+![alt text](5.png)
  
 
 ## RESULT

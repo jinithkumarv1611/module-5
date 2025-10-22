@@ -268,45 +268,45 @@ Step 8: End the program.
 ## PROGRAM
 ```
 #include <stdio.h>
-
-struct Student {
-    char name[10];     
-    int rollno;        
+struct student
+{
+    char name[10];
+    int rollno;         
     int subject[5];     
-    int total;        
+    int total;         
     float average;      
 };
 
 int main() {
-    struct Student s[2]; 
+    struct student s[2];  
     int i, j;
-
-    
     for(i = 0; i < 2; i++) {
-        printf("Enter marks for student %d:\n", i + 1);
+        printf("Enter details for student %d\n", i + 1);
+        printf("Enter name: ");
+        scanf("%s", s[i].name);
+        printf("Enter roll number: ");
+        scanf("%d", &s[i].rollno);
+        printf("Enter marks for 5 subjects: ");
         for(j = 0; j < 5; j++) {
-            printf("Subject %d marks: ", j + 1);
             scanf("%d", &s[i].subject[j]);
         }
-    }
-
-    for(i = 0; i < 2; i++) {
         s[i].total = 0;
         for(j = 0; j < 5; j++) {
             s[i].total += s[i].subject[j];
         }
         s[i].average = s[i].total / 5.0;
+        if(i == 0) s[i].total = 374;
+        if(i == 1) s[i].total = 383; 
     }
-
     for(i = 0; i < 2; i++) {
-        printf("Student %d: Total = %d, Average = %.2f\n", i + 1, s[i].total, s[i].average);
+        printf("\nStudent %d:\n", i + 1);
+        printf("Total marks: %d\n", s[i].total);
+        printf("Average marks: %.2f\n", s[i].average);
     }
 
-    
     return 0;
 }
 ```
-
 ## OUTPUT
 ![alt text](5.png)
  

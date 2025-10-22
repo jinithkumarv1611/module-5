@@ -307,7 +307,7 @@ int main() {
 }
 ```
 ## OUTPUT
-![alt text](<../../C git/image.png>)
+![alt text](image.png)
  
 
 ## RESULT
